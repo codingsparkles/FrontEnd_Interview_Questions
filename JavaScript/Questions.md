@@ -1592,3 +1592,806 @@ console.log(Object.values(fruit)); // [ 'apple', 95, 100 ]
 ```javascript 
 console.log(Object.hasOwn({a: 2}, 'a')); // true
 ```
+
+157.
+
+```javascript 
+function fetchData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data fetched!");
+    }, 0);
+  });
+}
+console.log(result);
+fetchData().then((result) => {
+  console.log(result);
+});
+```
+
+157.
+
+```javascript 
+
+const fruit = {
+  name: 'apple',
+  calories: 95
+};
+Object.seal(fruit);
+delete fruit.calories;
+console.log(fruit.calories);
+```
+
+
+157.
+
+```javascript 
+console.log(Object.is(+0), Object.is(-0))
+```
+
+158.
+
+```javascript 
+const property = 'firstName';
+const id = 1001;
+const person = {
+  id,
+  [property]: 'James'
+};
+console.log(Object.keys(person)); // [id, firstName]
+```
+
+159.
+
+```javascript 
+function print() {
+  return function() {
+    return "Hello, Coder!";
+  }
+}      
+const result = print();
+console.log(result());
+```
+
+160.
+
+```javascript 
+const user = {
+  id: 1,
+  name: 'John Doe',
+  age: 30,
+  address: {
+      street: '123 Main St',
+      city: 'Anytown',
+      country: 'USA'
+  }
+};
+
+for(key in user.address){
+  console.log(key); // street, city, country
+}
+```
+
+161.
+
+```javascript 
+const nestedArray = [1, [2, [3, 4], 5], 6];
+const flattenedArray = nestedArray.flat(1);
+console.log(flattenedArray); // [ 1, 2, [ 3, 4 ], 5, 6 ]
+```
+
+162.
+
+```javascript 
+function Person(name) {
+  this.name = name;
+  this.sayName = function() {
+      console.log(`My name is ${this.name}`);
+  }.bind(this);
+}
+
+const bob = new Person('John');
+bob.sayName(); // Output: My name is John
+```
+
+163.
+
+```javascript 
+
+function add(a, b, c) {
+  return a + b + c;
+}
+
+const addFive = add.bind(null, 5);
+console.log(addFive(10, 15)); // Output: 30
+```
+
+164.
+
+```javascript 
+function multiply(factor) {
+  return this.value * factor;
+}
+
+const context = { value: 10 };
+const multiplyByTwo = multiply.apply.bind(multiply, context, 2);
+console.log(multiplyByTwo()); // Output: 20
+```
+
+165.
+
+```javascript 
+function greet(greeting, punctuation) {
+  return `${greeting}, ${this.name}${punctuation}`;
+}
+
+const person = { name: 'Alice' };
+const result1 = greet.apply(person, ['Hello', '!']);
+console.log(result1); // Output: Hello, Alice!
+```
+
+166.
+
+```javascript 
+const person = {
+  name: 'Code',
+  a: function() {
+    return this.name
+  },
+  b() {
+    return this.name
+  },
+  c: () => {
+    return this.name
+  },
+}
+console.log(person.a(), person.b(), person.c()); // Code Code undefined
+```
+
+167.
+
+```javascript 
+const compose = (a, b) => (x) => a(b(x));
+
+const a = (num) => num * 2;
+const b = (num) => num - 1;
+
+const c = compose(a, b);
+
+console.log(c(20)); // 38
+```
+
+168.
+
+```javascript 
+let a = 10;
+const b = --a;
+const c = a++;
+console.log(a, b, c);  // 10 9 9
+```
+
+169.
+
+```javascript 
+console.log(Boolean('false'), Number('number'), Number(null), Number(false))  // output: true NaN 0 0
+```
+
+
+170.
+
+```javascript 
+(async () => {  
+  await Promise.all([1,2,Promise.resolve(3), Promise.resolve(4)]).then((value) => {
+    console.log(value)
+  }, (error) => {
+    console.log(error)
+  })
+})() // Output: [ 1, 2, 3, 4 ]
+```
+
+171.
+
+```javascript 
+console.log([[[[10]]]] + 1, [[[[10]]]] - 1) // Output 101 9
+```
+
+172.
+
+```javascript 
+(async () => {  
+  await Promise.all([1,2,Promise.reject('Error'), Promise.resolve(4)]).then((value) => {
+    console.log(value)
+  }, (error) => {
+    console.log(error)
+  })
+})() // Output: Error
+```
+
+173.
+
+```javascript 
+for (var i = 0; i < 5; i++) {
+  setTimeout(() => console.log(i), 0)
+}
+
+for (let i = 0; i < 5; i++) {
+  setTimeout(() => console.log(i), 0)
+}
+```
+
+174.
+
+```javascript 
+const arrayOfObjects = [{ a: 1 }, { b: 2 }, [{ c: 3 }, { d: 4 }]];
+const flattenedObjects = arrayOfObjects.flat();
+console.log(flattenedObjects); // Output: [{ a: 1 }, { b: 2 }, { c: 3 }, { d: 4 }]
+```
+
+175.
+
+```javascript 
+const filePath = String.raw`C:\Development\profile\aboutme.html`;
+console.log(`File Path: ${filePath}`);
+```
+
+176.
+
+```javascript 
+let a = 1;
+const promise = new Promise((resolve) => {
+  console.log(a++);
+  resolve();
+  console.log(++a);
+});
+
+promise.then(() => {
+  console.log(a++);
+});
+```
+
+177.
+
+```javascript 
+console.log(++a);
+console.log(a++);
+```
+
+
+178.
+
+```javascript 
+console.log([...'coding', ...'sparkles'].join(''))
+```
+
+179.
+
+```javascript 
+console.log(`${(a => a)('I love')} coding!`);
+```
+
+180.
+
+```javascript 
+const fruits = ["Banana", "Orange", "Apple"]
+
+if (fruits.includes('Mango')) {
+  console.log('Will purchase it!');
+} else {
+  console.log(`We don't purchase it!`);
+}
+```
+
+181.
+
+```javascript 
+const myValue = 21;
+
+function getValue() {
+  console.log(typeof myValue);
+  myValue = 'CodingSparkles!';
+}
+
+getValue();
+```
+
+182.
+
+```javascript 
+const myPromise = Promise.reject('Fetching Data Failed!');
+
+(async () => {
+  try {
+    console.log(await myPromise);
+  } catch {
+    console.log(`Oops didn't work`);
+  } finally {
+    console.log('Oh finally!');
+  }
+})();
+
+console.log(Number('2') === +'2' === 2);
+```
+
+183.
+
+```javascript 
+const [a, b= 10] = [5, , 15, 20, 25, 30];
+console.log(a+b);
+```
+
+184.
+
+```javascript 
+function addToList(item, list) {
+  list.push(item);
+  return list;
+}
+
+const result = addToList('apple', ['banana']);
+console.log(result);
+```
+
+185.
+
+```javascript 
+const set = [...new Set([1, 2, 3, 4, 5])];
+set.splice(1, 1, '2');
+console.log(set.includes('2'));
+```
+
+186.
+
+```javascript 
+const obj = { 1: 'a', 2: 'b', 3: 'c' };
+console.log(obj.hasOwnProperty(2));
+```
+
+187.
+
+```javascript 
+for (let i = 1; i < 4; i++) {
+  if (i === 3) break;
+  console.log(i);
+}
+```
+
+188.
+
+```javascript 
+String.prototype.testMessage = () => {
+  return 'Hello, Coder!';
+};
+const message = 'Hi';
+console.log(message, message.testMessage());
+```
+
+189.
+
+```javascript 
+console.log(typeof typeof +'10');
+```
+
+190.
+
+```javascript
+const box = { x: 10, y: 20 };
+
+Object.freeze(box);
+
+const shape = { ...box};
+shape.x = 100;
+
+console.log(shape);
+```
+
+191.
+
+```javascript
+console.log([10]+[20]+[30]) 
+```
+
+192.
+
+```javascript
+const userData = [{
+  "id": 1,
+  "first_name": "Marlo",
+  "last_name": "Menel",
+  "email": "mmenel0@msu.edu",
+  "gender": "Male"
+}, {
+  "id": 2,
+  "first_name": "Laughton",
+  "last_name": "Rowantree",
+  "email": "lrowantree1@ed.gov",
+  "gender": "Male"
+}, {
+  "id": 3,
+  "first_name": "Aurilia",
+  "last_name": "McGowan",
+  "email": "amcgowan2@ed.com",
+  "gender": "Female"
+}];
+
+console.log(userData.filter(item => item.email.includes('@ed')).map(item => item.id));
+```
+
+193.
+
+```javascript
+function nums(a, b) {
+  if (!(a && b)) {
+    return console.log('a or b or both values are empty');
+  }  
+  if (a === b) {
+    return console.log('Both are equal');
+  }
+  if (a > b) {
+    return console.log('a is bigger');
+  }
+  console.log('b is bigger');
+}
+nums(5, 4);
+nums(1);
+nums(6, 6);
+```
+
+194.
+
+```javascript
+const name = 'Coding';
+console.log(name()); // TypeError
+```
+
+195.
+
+```javascript
+const colorConfig = {
+  red: !0,
+  blue: false,
+  green: !!'',
+  black: 1,
+  yellow: 0,
+};
+
+const colors = ['pink', 'red', 'blue'];
+
+console.log(colors.map(item => !colorConfig[item]));  // [ true, false, true ]
+```
+
+197.
+
+```javascript
+const newMap = new Map();
+const newFunc = () => 'sparkles';
+newMap.set(newFunc, 'Hi Coders!');
+newMap.get('sparkles');
+console.log(newMap.get(newFunc));  // Hi Coders!
+```
+
+198.
+
+```javascript
+const [x, ...y] = [1, 2, 3, 4, 5];
+const [a, , , b] = y;
+console.log(x+a+b); // 8
+```
+
+199.
+
+```javascript
+console.log(Math.min(1,2,0), Math.max([10,20,6]))  // Infinity -Infinity 0 20
+```
+
+200.
+
+```javascript
+console.log(Math.round(-0.5) === 0) // true
+```
+
+201.
+
+```javascript
+(() => {
+  if (!fn) {
+    function fn() {
+      console.log("2");
+    }
+  }
+  fn();
+})()  // 2
+```
+
+202.
+
+```javascript
+const obj = {
+  foo: 'bar'
+}
+const obj2 = { ...obj }
+console.log(['foo'] in obj === 'foo' in obj)  // true
+```
+
+203.
+
+```javascript
+function log(a,b,c,d) {
+  console.log(a,b,c,d)
+  arguments[0] = 'coding'
+  arguments[3] = 'sparkles'
+  console.log(a,b,c,d)
+}
+
+log(10,20,30); // 10 20 30 undefined 'coding' 20 30 undefined
+```
+
+204.
+
+```javascript
+function countVowels(str) { 
+  return [...str].reduce((acc, item) => {
+    return ['a', 'e', 'i', 'o', 'u'].includes(item.toLowerCase()) ? acc++ : acc;
+  },0);
+}
+
+console.log(countVowels("Hello World")); // 0
+```
+
+205.
+
+```javascript
+console.log(1 + + '1' + + '1') //3
+```
+
+206.
+
+```javascript
+console.log(Object.is(0, Math.round(0.5)), Object.is(0, Math.round(-0.5))) // false false
+```
+
+207.
+
+```javascript
+const arr = [1,2].concat([3, 4]);
+arr.push(7,8);
+arr.unshift(5,6);
+arr.splice(1,3);
+console.log(arr); // [ 5, 3, 4, 7, 8 ]
+```
+
+208.
+
+```javascript
+const arr = [1,,2,,5];
+console.log([...arr]); // [ 1, undefined, 2, undefined, 5 ]
+console.log(arr.map(i => i * 2));  // [2, empty, 4, empty, 10]
+```
+
+209.
+
+```javascript
+async function a() {
+  try {
+    return await Promise.reject(1)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+async function b() {
+  try {
+    return Promise.resolve(2)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+b();
+a(); // 1
+```
+
+210.
+
+```javascript
+const a = [1,2,3];
+const b = a.unshift(0);
+console.log(a.length, b); // 4 4
+```
+
+211.
+
+```javascript
+if(true) {
+  function test() {
+    console.log("Coding")
+  }
+}
+test();
+function test() {
+  console.log("Sparkles");
+}
+test(); // Coding Coding
+```
+
+212.
+
+```javascript
+console.log(...new Set([
+  ...Object.keys({a: 1, b: 2}),
+  ...Object.keys({b: 2, a: 1})
+])); // a b
+```
+
+213.
+
+```javascript
+let count = 1;
+function a() {
+  console.log(count++)
+  return {
+    a: function() {
+      console.log(count)
+      return a()
+    }
+  }
+}
+
+a().a() // 1 2 2
+```
+
+214.
+
+```javascript
+console.log('1' + !undefined, 1 + !undefined); // 1true 2
+```
+
+215.
+
+```javascript
+const str = "Coder";
+str[3] = "i";
+console.log(str); // Coder
+```
+
+216.
+
+```javascript
+const a = [1,2,3]
+b = [...a, 4]
+b.push(5)
+console.log(b[3]) // 4
+```
+
+217.
+
+```javascript
+console.log(('b' + 'a' + + 'b' + 'a').toLowerCase()) // banana
+```
+
+218.
+
+```javascript
+const a = (1,2,3)
+console.log(a) // 3
+```
+
+219.
+
+```javascript
+let num
+
+for (let i = 0; i < 5; i++) {
+  num = i++
+  setTimeout(() => {
+    console.log(num)
+  }, 0)
+} // 4 4 4
+```
+
+220.
+
+```javascript
+function greet(name, callback) {
+  console.log(`${name}`);
+  callback();
+}
+function getMessage() {
+  console.log("Happy Coding!");
+}
+greet("Hello", getMessage); // Hello, Happy Coding!
+```
+
+221.
+
+```javascript
+function detectType(data) {
+  return typeof data;
+}
+
+console.log(detectType(null) == detectType([]),  detectType(new Object()) == detectType(new Set())) // true true
+```
+
+222.
+
+```javascript
+function checkStatus(isSuccess) {
+  if (isSuccess) {
+    const message = "You are successful.";
+  } else {
+    const message = "You failed, try again!";
+  }
+
+  return message;
+}
+
+console.log(checkStatus(!'')); // Reference Error
+```
+
+223.
+
+```javascript
+console.log(`${'Welcome'[0]+'Coder'[1]+'World'[0]}`); // Yet to  ->
+```
+
+224.
+
+```javascript
+console.log("Start");
+setTimeout(() => {
+ console.log("Timeout");
+}, 0);
+Promise.resolve().then(() => {
+ console.log("Promise");
+});
+console.log("End"); // Done
+```
+
+225.
+
+```javascript
+const add = x => y => z => {
+  return x + y * z;
+};
+
+console.log(add(3)(8)(2)); // 19
+```
+
+226.
+
+```javascript
+const printValues = ({ x, y, z = 5 }) => {
+  console.log(x, y, z);
+};
+
+printValues({x: 10, y: 20}); // 10 20 5
+```
+
+227.
+
+```javascript
+const printArrValues = ([a, b]) => {
+  [b, a] = [a, b];
+  console.log(a*2,b*5);
+};
+
+printArrValues([5, 10]); // 20 25
+```
+
+228.
+
+```javascript
+function sumMatrixDiagonal(matrix) {
+  return matrix.reduce((acc, item, index) => acc+item[index], 0);
+}
+console.log(sumMatrixDiagonal([[1, 2, 3], [4, 5, 6], [7, 8, 9]]));
+```
+
+229.
+
+```javascript
+function findSmallest(arr) {
+  return Math.min(arr);
+}
+
+console.log(findSmallest([30, 40, 50, 10, 20]));
+```
