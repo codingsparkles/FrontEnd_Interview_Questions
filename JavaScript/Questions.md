@@ -2395,3 +2395,26 @@ function findSmallest(arr) {
 
 console.log(findSmallest([30, 40, 50, 10, 20]));
 ```
+
+230.
+
+```javascript
+const nums = [9, 2, 5, 3, 7];
+console.log(new Array(nums.length).fill(1));
+```
+
+231.
+
+```javascript
+console.log([1, 2, 3].reduce((x, y) => console.log(x, y)));
+```
+
+232.
+
+```javascript
+(() => {  
+  console.log(x);
+  let x = (y = 10);
+  console.log(y);
+})();
+```

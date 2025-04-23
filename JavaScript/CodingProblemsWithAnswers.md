@@ -572,3 +572,130 @@ console.log(convertCamelCase("convert_snake_to_camel_case"))
 console.log(convertCamelCase("inner_function_example"))
 console.log(convertCamelCase("this_is_already_camel_case"))
 ```
+
+22. Sum of Digits Until Single Digit
+Given a non-negative integer, repeatedly add its digits until the result has only one digit.
+
+Example:
+Input: 38
+Output: 2
+
+```javascript
+function sumDigits(digit) {
+  const nums = digit?.toString()?.split("");
+  const sum = nums?.reduce((acc, num) => acc + +num, 0);
+  if(sum?.toString()?.length > 1) {
+    return sumDigits(sum);
+  }
+  return sum;
+}
+
+console.log(sumDigits(38));
+console.log(sumDigits(12345));
+console.log(sumDigits(9));
+console.log(sumDigits(567));
+console.log(sumDigits(1024));
+```
+
+23. Find Missing Number in Arithmetic Sequence
+Given an array that represents an arithmetic progression with one missing element, implement a function to find the missing number. An arithmetic progression is defined as a sequence of numbers such that the difference of any two successive members is a constant. Consider the input array is non-empty and the progression has at least three elements (including the missing one).
+
+Example:
+Input: [5, 10, 20, 25, 30]
+Output: 15
+
+```javascript
+function findMissingNumber(arr) {
+  const n = arr.length + 1;
+  const first = arr[0];
+  const last = arr[arr.length - 1];
+  const expectedSum = (n * (first + last)) / 2;
+  const actualSum = arr.reduce((sum, num) => sum + num, 0);
+  const missingNumber = expectedSum - actualSum;  
+  return missingNumber;
+}
+
+console.log(findMissingNumber([5, 10, 20, 25, 30]));
+```
+
+24. Count the Number of Duplicate Elements in an Array
+You are given an array of integers. Your task is to count how many elements in the array occur more than once.
+
+Example:
+Input: [1, 2, 3, 4, 5, 1, 2, 6]
+Output: 2
+
+```javascript
+function countDuplicateNumbers(arr) {
+  const uniqueNums = [...new Set(arr)];
+  return uniqueNums.reduce((acc, item) => {
+    const length = arr.filter(i => i === item)?.length;
+    if(length >= 2) {
+      return ++acc;
+    }
+    return acc;
+  }, 0);
+}
+
+console.log(countDuplicateNumbers([1, 2, 3, 4, 5, 1, 2, 6]));
+console.log(countDuplicateNumbers([1, 1, 2, 2, 3, 4, 5]));
+console.log(countDuplicateNumbers([10, 20, 30, 40, 50]));
+console.log(countDuplicateNumbers([6, 7, 6, 8, 8, 8, 9, 10, 10]));
+console.log(countDuplicateNumbers([42, 42, 42, 42]));
+console.log(countDuplicateNumbers([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]));
+```
+
+25. Find the Single Non-Duplicate Element in an Array
+Given a sorted array where every element appears twice except for one element which appears only once, find the single element that appears only once. Your solution should have a linear runtime complexity and you cannot use extra space (modify in-place if required).
+
+Example:
+Input: [1, 1, 3, 3, 4, 4, 5, 7, 7]
+Output: 5
+
+```javascript
+// Normal 
+function findNonDuplicate(arr) {
+  const unique = [...new Set(arr)];
+  return unique.reduce((acc, item) => {
+    const length = arr.filter(i => i === item)?.length;
+    if (length > 1){
+      return acc;
+    }
+    return item;
+  }, 0);
+}
+
+console.log(findNonDuplicate([1, 1, 3, 3, 4, 4, 5, 7, 7]))
+console.log(findNonDuplicate([1, 1, 2, 2, 3, 4, 4]))
+console.log(findNonDuplicate([0, 0, 1, 1, 2, 2, 7, 8, 8]))
+console.log(findNonDuplicate([5, 5, 8, 10, 10]))
+
+// With linear runtime complexity
+function findSingleNonDuplicate(arr) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left < right) {
+      const mid = Math.floor((left + right) / 2);
+
+      if (mid % 2 === 0) {
+          if (arr[mid] === arr[mid + 1]) {
+              left = mid + 2;
+          } else {
+              right = mid;
+          }
+      } else {
+          if (arr[mid] === arr[mid - 1]) {
+              left = mid + 1;
+          } else {
+              right = mid;
+          }
+      }
+  }
+  return arr[left];
+}
+
+const input = [1, 1, 3, 3, 4, 4, 5, 7, 7];
+const output = findSingleNonDuplicate(input);
+console.log(output);
+```
